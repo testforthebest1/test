@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="<%= lang === 'ar' ? 'ar' : 'en' %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= lang === 'ar' ? 'عن الموقع | سوق الدراجات النارية اللبناني' : 'About | Lebanese Motorcycle Marketplace' %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      background-color: <%= theme === 'dark' ? '#121212' : '#f5f5f5' %>;
+      color: <%= theme === 'dark' ? '#ffffff' : '#333333' %>;
+    }
+    .card {
+      background-color: <%= theme === 'dark' ? '#1e1e1e' : '#ffffff' %>;
+      color: <%= theme === 'dark' ? '#e0e0e0' : '#333333' %>;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px <%= theme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.1)' %>;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .team-member {
+      background-color: <%= theme === 'dark' ? '#2d2d2d' : '#f9f9f9' %>;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="<%= theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800' %> shadow">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="/" class="text-xl font-bold flex items-center">
+          <span><%= lang === 'ar' ? 'سوق الدراجات النارية اللبناني' : 'Lebanese Motorcycle Marketplace' %></span>
+        </a>
+        <div class="flex items-center space-x-4">
+          <a href="/?lang=<%= lang === 'ar' ? 'en' : 'ar' %>&theme=<%= theme %>" class="px-3 py-2 rounded hover:<%= theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200' %>">
+            <%= lang === 'ar' ? 'English' : 'العربية' %>
+          </a>
+          <a href="/?theme=<%= theme === 'dark' ? 'light' : 'dark' %>&lang=<%= lang %>" class="px-3 py-2 rounded hover:<%= theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200' %>">
+            <%= theme === 'dark' ? (lang === 'ar' ? 'وضع النهار' : 'Light Mode') : (lang === 'ar' ? 'وضع الليل' : 'Dark Mode') %>
+          </a>
+          <% if (typeof user !== 'undefined' && user) { %>
+            <div class="relative group">
+              <button class="flex items-center px-3 py-2 rounded hover:<%= theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200' %>">
+                <%= user.name %> <span class="ml-1">▼</span>
+              </button>
+              <div class="absolute right-0 mt-2 w-48 rounded-md shadow-lg <%= theme === 'dark' ? 'bg-gray-800' : 'bg-white' %> ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
+                <div class="py-1">
+                  <a href="/favorites" class="block px-4 py-2 text-sm <%= theme === 'dark' ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100' %>">
+                    <%= lang === 'ar' ? 'المفضلة' : 'Favorites' %>
+                  </a>
+                  <a href="/sell" class="block px-4 py-2 text-sm <%= theme === 'dark' ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100' %>">
+                    <%= lang === 'ar' ? 'بيع دراجة' : 'Sell a Motorcycle' %>
+                  </a>
+                  <a href="/logout" class="block px-4 py-2 text-sm <%= theme === 'dark' ? 'text-gray-300 hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100' %>">
+                    <%= lang === 'ar' ? 'تسجيل الخروج' : 'Logout' %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% } else { %>
+            <a href="/login" class="px-3 py-2 rounded hover:<%= theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200' %>">
+              <%= lang === 'ar' ? 'تسجيل الدخول' : 'Login' %>
+            </a>
+            <a href="/register" class="px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+              <%= lang === 'ar' ? 'تسجيل' : 'Register' %>
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 <%= theme === 'dark' ? 'text-white' : 'text-gray-900' %>">
+      <%= lang === 'ar' ? 'عن سوق الدراجات النارية اللبناني' : 'About Lebanese Motorcycle Marketplace' %>
+    </h1>
+    
+    <div class="card">
+      <h2 class="text-2xl font-semibold mb-4 <%= theme === 'dark' ? 'text-gray-200' : 'text-gray-800' %>">
+        <%= lang === 'ar' ? 'قصتنا' : 'Our Story' %>
+      </h2>
+      <p class="mb-4">
+        <%= lang === 'ar' ? 'تأسس سوق الدراجات النارية اللبناني في عام 2023 بهدف توفير منصة آمنة وموثوقة للبنانيين لشراء وبيع الدراجات النارية. نسعى جاهدين لتوفير تجربة سهلة الاستخدام تربط بين عشاق الدراجات النارية في جميع أنحاء لبنان.' : 'Lebanese Motorcycle Marketplace was founded in 2023 with the goal of providing a safe and reliable platform for Lebanese people to buy and sell motorcycles. We strive to provide a user-friendly experience that connects motorcycle enthusiasts across Lebanon.' %>
+      </p>
+      <p>
+        <%= lang === 'ar' ? 'يمكن للمستخدمين من جميع أنحاء لبنان الاستفادة من منصتنا للبحث عن الدراجات النارية المستعملة والجديدة، ومقارنة الأسعار، والتواصل مع البائعين مباشرة. نحن نؤمن بالشفافية والأمان في جميع المعاملات.' : 'Users from all over Lebanon can use our platform to search for used and new motorcycles, compare prices, and connect with sellers directly. We believe in transparency and safety in all transactions.' %>
+      </p>
+    </div>
+    
+    <div class="card">
+      <h2 class="text-2xl font-semibold mb-4 <%= theme === 'dark' ? 'text-gray-200' : 'text-gray-800' %>">
+        <%= lang === 'ar' ? 'مهمتنا' : 'Our Mission' %>
+      </h2>
+      <p class="mb-4">
+        <%= lang === 'ar' ? 'مهمتنا هي إنشاء أكبر وأكثر سوق للدراجات النارية موثوقية في لبنان. نحن نسعى جاهدين لتبسيط عملية بيع وشراء الدراجات النارية من خلال توفير منصة آمنة وسهلة الاستخدام تربط البائعين والمشترين.' : 'Our mission is to create the largest and most trusted motorcycle marketplace in Lebanon. We strive to simplify the process of selling and buying motorcycles by providing a safe and user-friendly platform that connects sellers and buyers.' %>
+      </p>
+      <p>
+        <%= lang === 'ar' ? 'نحن ملتزمون بتوفير تجربة مستخدم استثنائية من خلال:' : 'We are committed to providing an exceptional user experience by:' %>
+      </p>
+      <ul class="list-disc pl-6 mt-2 space-y-2">
+        <li><%= lang === 'ar' ? 'ضمان أن جميع القوائم دقيقة وحديثة' : 'Ensuring all listings are accurate and up-to-date' %></li>
+        <li><%= lang === 'ar' ? 'التحقق من هوية البائعين لتعزيز الثقة والأمان' : 'Verifying seller identities to promote trust and safety' %></li>
+        <li><%= lang === 'ar' ? 'توفير واجهة سهلة الاستخدام وبحث متقدم' : 'Providing an easy-to-use interface and advanced search' %></li>
+        <li><%= lang === 'ar' ? 'تسهيل التواصل المباشر بين البائعين والمشترين' : 'Facilitating direct communication between sellers and buyers' %></li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h2 class="text-2xl font-semibold mb-4 <%= theme === 'dark' ? 'text-gray-200' : 'text-gray-800' %>">
+        <%= lang === 'ar' ? 'فريقنا' : 'Our Team' %>
+      </h2>
+      <p class="mb-4">
+        <%= lang === 'ar' ? 'فريقنا مكون من مجموعة متنوعة من المحترفين المتحمسين للدراجات النارية والتكنولوجيا. نحن نعمل معًا لبناء وتحسين منصتنا باستمرار.' : 'Our team consists of a diverse group of professionals who are passionate about motorcycles and technology. We work together to build and continuously improve our platform.' %>
+      </p>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="<%= lang === 'ar' ? 'كريم نصار' : 'Karim Nassar' %>">
+          <h3 class="text-lg font-medium mt-2"><%= lang === 'ar' ? 'كريم نصار' : 'Karim Nassar' %></h3>
+          <p class="text-sm text-gray-500"><%= lang === 'ar' ? 'المؤسس والرئيس التنفيذي' : 'Founder & CEO' %></p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="<%= lang === 'ar' ? 'زينة الخوري' : 'Zeina Khoury' %>">
+          <h3 class="text-lg font-medium mt-2"><%= lang === 'ar' ? 'زينة الخوري' : 'Zeina Khoury' %></h3>
+          <p class="text-sm text-gray-500"><%= lang === 'ar' ? 'مدير التسويق' : 'Marketing Director' %></p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" alt="<%= lang === 'ar' ? 'علي حسن' : 'Ali Hassan' %>">
+          <h3 class="text-lg font-medium mt-2"><%= lang === 'ar' ? 'علي حسن' : 'Ali Hassan' %></h3>
+          <p class="text-sm text-gray-500"><%= lang === 'ar' ? 'رئيس قسم التكنولوجيا' : 'Chief Technology Officer' %></p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="<%= lang === 'ar' ? 'نادين سعد' : 'Nadine Saad' %>">
+          <h3 class="text-lg font-medium mt-2"><%= lang === 'ar' ? 'نادين سعد' : 'Nadine Saad' %></h3>
+          <p class="text-sm text-gray-500"><%= lang === 'ar' ? 'مدير خدمة العملاء' : 'Customer Service Manager' %></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="<%= theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-800' %> py-6">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>&copy; 2023-2025 <%= lang === 'ar' ? 'سوق الدراجات النارية اللبناني' : 'Lebanese Motorcycle Marketplace' %></p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="/about" class="hover:underline"><%= lang === 'ar' ? 'عن الموقع' : 'About' %></a>
+          <a href="/contact" class="hover:underline"><%= lang === 'ar' ? 'اتصل بنا' : 'Contact' %></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

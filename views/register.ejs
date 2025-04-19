@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="<%= lang === 'ar' ? 'ar' : 'en' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= lang === 'ar' ? 'إنشاء حساب | موتو لبنان' : 'Register | MotoLebanon' %></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="<%= lang === 'ar' ? 'ar' : '' %> <%= theme === 'dark' ? 'theme-dark' : '' %>">
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="/" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.42 12.37a6.95 6.95 0 0 0-.54-1.09l-4.23-2.44 1.62-5.9h-3.25l-.55 3.5-5.43-3.08A1.74 1.74 0 0 0 6.06 3c-1.74 0-2.97.58-3.73 1.75A5.95 5.95 0 0 0 4.5 12"/>
+          <path d="M10.5 8 8 9.5l-2.5.5"/>
+          <circle cx="7" cy="16.5" r="3.5"/>
+          <circle cx="16" cy="16.5" r="3.5"/>
+          <path d="M3.5 16.5H5"/>
+          <path d="M18 16.5h2.5"/>
+        </svg>
+        <span><%= lang === 'ar' ? 'موتو لبنان' : 'MotoLebanon' %></span>
+      </a>
+      
+      <button class="mobile-nav-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      
+      <nav class="nav">
+        <a href="/" class="nav-item"><%= lang === 'ar' ? 'الرئيسية' : 'Home' %></a>
+        <a href="/about" class="nav-item"><%= lang === 'ar' ? 'من نحن' : 'About' %></a>
+        <a href="/login" class="nav-item"><%= lang === 'ar' ? 'تسجيل الدخول' : 'Login' %></a>
+        <a href="/register" class="nav-item active"><%= lang === 'ar' ? 'إنشاء حساب' : 'Register' %></a>
+        <a href="/contact" class="nav-item"><%= lang === 'ar' ? 'اتصل بنا' : 'Contact' %></a>
+      </nav>
+      
+      <div class="controls">
+        <button class="control-button theme-toggle" title="<%= lang === 'ar' ? 'تبديل السمة' : 'Toggle theme' %>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Icon will be replaced by JavaScript -->
+          </svg>
+        </button>
+        
+        <button class="control-button lang-toggle" title="<%= lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية' %>">
+          <%= lang === 'ar' ? 'English' : 'العربية' %>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Register Form -->
+  <section class="main-content">
+    <div class="container">
+      <div class="form-container">
+        <h2 class="form-title"><%= lang === 'ar' ? 'إنشاء حساب جديد' : 'Create a New Account' %></h2>
+        
+        <form action="/register" method="post">
+          <div class="form-group">
+            <label for="name" class="form-label"><%= lang === 'ar' ? 'الاسم' : 'Name' %></label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label"><%= lang === 'ar' ? 'البريد الإلكتروني' : 'Email' %></label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="form-label"><%= lang === 'ar' ? 'رقم الهاتف' : 'Phone Number' %></label>
+            <input type="tel" id="phone" name="phone" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password" class="form-label"><%= lang === 'ar' ? 'كلمة المرور' : 'Password' %></label>
+            <input type="password" id="password" name="password" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirm-password" class="form-label"><%= lang === 'ar' ? 'تأكيد كلمة المرور' : 'Confirm Password' %></label>
+            <input type="password" id="confirm-password" name="confirm-password" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="form-button"><%= lang === 'ar' ? 'إنشاء حساب' : 'Register' %></button>
+          </div>
+        </form>
+        
+        <div class="form-footer">
+          <%= lang === 'ar' ? 'لديك حساب بالفعل؟' : 'Already have an account?' %> <a href="/login"><%= lang === 'ar' ? 'تسجيل الدخول' : 'Login' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="footer-title"><%= lang === 'ar' ? 'حول موتو لبنان' : 'About MotoLebanon' %></h3>
+          <p><%= lang === 'ar' ? 'موتو لبنان هو الموقع الرائد في لبنان لبيع وشراء الدراجات النارية. نقدم مجموعة واسعة من الخيارات لجميع عشاق الدراجات النارية.' : 'MotoLebanon is Lebanon\'s leading motorcycle marketplace. We offer a wide range of options for all motorcycle enthusiasts.' %></p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3 class="footer-title"><%= lang === 'ar' ? 'روابط سريعة' : 'Quick Links' %></h3>
+          <ul class="footer-links">
+            <li><a href="/" class="footer-link"><%= lang === 'ar' ? 'الرئيسية' : 'Home' %></a></li>
+            <li><a href="/about" class="footer-link"><%= lang === 'ar' ? 'من نحن' : 'About Us' %></a></li>
+            <li><a href="/contact" class="footer-link"><%= lang === 'ar' ? 'اتصل بنا' : 'Contact Us' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'شروط الاستخدام' : 'Terms of Service' %></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3 class="footer-title"><%= lang === 'ar' ? 'تصنيفات' : 'Categories' %></h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'دراجات رياضية' : 'Sport Bikes' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'دراجات كروزر' : 'Cruiser Bikes' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'دراجات نايكد' : 'Naked Bikes' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'دراجات مغامرات' : 'Adventure Bikes' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'سكوتر' : 'Scooters' %></a></li>
+            <li><a href="#" class="footer-link"><%= lang === 'ar' ? 'قطع غيار واكسسوارات' : 'Parts & Accessories' %></a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3 class="footer-title"><%= lang === 'ar' ? 'اتصل بنا' : 'Contact Us' %></h3>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="<%= lang === 'ar' ? 'icon-ltr' : '' %>">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <%= lang === 'ar' ? 'وسط بيروت، شارع الحمرا، لبنان' : 'Downtown Beirut, Hamra Street, Lebanon' %>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="<%= lang === 'ar' ? 'icon-ltr' : '' %>">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            +961 1 123 456
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="<%= lang === 'ar' ? 'icon-ltr' : '' %>">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            info@motolebanon.com
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 MotoLebanon. <%= lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.' %></p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="/js/main.js"></script>
+</body>
+</html>
